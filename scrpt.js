@@ -54,4 +54,10 @@ contactForm.addEventListener('submit', (e) => {
     } else {
         alert('Please fill in all fields.');
     }
+    // Toggle mobile menu
+function toggleMenu() {
+    const navbar = document.getElementById('navbar');
+    navbar.classList.toggle('show');
+}
+
 });
