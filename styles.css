@@ -57,4 +57,58 @@ nav ul li {
     margin: 0 15px;
 }
 
-nav ul li a
+/* Default styles for navigation */
+nav ul {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    background-color: #0056B3;
+    padding: 10px;
+    margin-top: 10px;
+}
+
+nav ul li {
+    margin: 0 15px;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: #FFFFFF;
+    font-weight: bold;
+    transition: color 0.3s;
+}
+
+nav ul li a:hover {
+    color: #F0F0F0;
+}
+
+/* Mobile Menu */
+.menu-toggle {
+    display: none;
+    font-size: 30px;
+    background: none;
+    border: none;
+    color: #FFFFFF;
+    cursor: pointer;
+}
+
+/* Media Query for Mobile */
+@media (max-width: 768px) {
+    nav ul {
+        display: none; /* Hide menu by default */
+        flex-direction: column;
+        align-items: center;
+    }
+
+    nav ul li {
+        margin: 10px 0;
+    }
+
+    .menu-toggle {
+        display: block; /* Show hamburger button */
+    }
+
+    nav.active ul {
+        display: flex; /* Show menu when active */
+    }
+}
