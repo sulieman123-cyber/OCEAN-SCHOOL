@@ -1,38 +1,59 @@
-// Smooth Scroll
-document.querySelectorAll('nav a').forEach(link => {
-    link.addEventListener('click', function (e) {
+// Smooth Scroll for Navigation Links
+document.querySelectorAll('nav a').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
         e.preventDefault();
-        const target = document.querySelector(this.getAttribute('href'));
-        target.scrollIntoView({ behavior: 'smooth' });
+        const targetId = this.getAttribute('href').substring(1);
+        document.getElementById(targetId).scrollIntoView({ behavior: 'smooth' });
     });
 });
 
-// Back to Top
-const backToTop = document.getElementById('backToTop');
+// Back to Top Button
+const backToTopButton = document.getElementById('backToTop');
+
 window.addEventListener('scroll', () => {
-    backToTop.style.display = window.scrollY > 300 ? 'block' : 'none';
+    if (window.scrollY > 200) {
+        backToTopButton.style.display = 'block';
+    } else {
+        backToTopButton.style.display = 'none';
+    }
 });
 
-backToTop.addEventListener('click', () => {
+backToTopButton.addEventListener('click', () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
 });
 
-// Carousel
-let slideIndex = 0;
+// Contact Form Validation and Submission
+const contactForm = document.getElementById('contactForm');
+const formMessage = document.getElementById('formMessage');
+
+contactForm.addEventListener('submit', (e) => {
+    e.preventDefault();
+
+    const name = document.getElementById('name').value.trim();
+    const email = document.getElementById('email').value.trim();
+    const message = document.getElementById('message').value.trim();
+
+    if (name && email && message) {
+        formMessage.style.display = 'block';
+        formMessage.textContent = 'Thank you for your message!';
+        contactForm.reset();
+
+        setTimeout(() => {
+            formMessage.style.display = 'none';
+        }, 3000);
+    } else {
+        alert('Please fill in all fields.');
+    }
+});
+
+// Carousel Functionality
+let currentSlide = 0;
 const slides = document.querySelectorAll('.carousel-images img');
 const totalSlides = slides.length;
 
 function moveSlide(direction) {
-    slideIndex = (slideIndex + direction + totalSlides) % totalSlides;
-    document.querySelector('.carousel-images').style.transform = `translateX(-${slideIndex * 100}%)`;
+    currentSlide += direction;
+    if (currentSlide < 0) currentSlide = totalSlides - 1;
+    if (currentSlide >= totalSlides) currentSlide = 0;
+    document.querySelector('.carousel-images').style.transform = `translateX(-${currentSlide * 100}%)`;
 }
-
-// Contact Form
-document.getElementById('contactForm').addEventListener('submit', function(e) {
-    e.preventDefault();
-    document.getElementById('formMessage').textContent = 'Thanks for reaching out!';
-    this.reset();
-    setTimeout(() => {
-        document.getElementById('formMessage').textContent = '';
-    }, 3000);
-});
