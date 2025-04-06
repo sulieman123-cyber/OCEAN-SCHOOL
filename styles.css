@@ -1,12 +1,4 @@
-:root {
-    --primary: #007BFF;
-    --dark: #0056B3;
-    --light: #f0f0f0;
-    --white: #fff;
-    --text: #333;
-}
-
-body, h1, h2, p, ul, li, a, button {
+body, h1, h2, h3, p, ul, li, a, button {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
@@ -14,30 +6,38 @@ body, h1, h2, p, ul, li, a, button {
 
 body {
     font-family: 'Poppins', sans-serif;
-    background-color: var(--light);
-    color: var(--text);
+    color: #333;
+    background-color: #F0F0F0;
+    line-height: 1.6;
 }
 
 header {
-    background-color: var(--primary);
-    color: var(--white);
+    background-color: #007BFF;
+    color: #fff;
     padding: 20px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
     position: sticky;
     top: 0;
     z-index: 1000;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    position: absolute;
+    top: 10px;
+    right: 20px;
 }
 
 .logo img {
-    width: 100px;
-    margin-right: 20px;
+    width: 120px;
+    height: auto;
 }
 
 .school-name {
-    font-size: 2.5rem;
+    font-size: 3rem;
     font-weight: bold;
+    text-align: center;
     text-decoration: underline;
 }
 
@@ -45,8 +45,9 @@ nav ul {
     list-style: none;
     display: flex;
     justify-content: center;
-    background-color: var(--dark);
+    background-color: #0056B3;
     padding: 10px;
+    margin-top: 10px;
 }
 
 nav ul li {
@@ -54,107 +55,74 @@ nav ul li {
 }
 
 nav ul li a {
-    color: var(--white);
     text-decoration: none;
+    color: #fff;
     font-weight: bold;
+    transition: color 0.3s;
 }
 
 nav ul li a:hover {
-    color: var(--light);
+    color: #F0F0F0;
 }
 
-/* Carousel */
-.carousel {
-    position: relative;
-    overflow: hidden;
-    height: 350px;
-    margin: 20px auto;
-    max-width: 100%;
-    border-radius: 10px;
+main {
+    padding: 20px;
 }
 
-.carousel-images {
-    display: flex;
-    width: 300%;
-    transition: transform 0.5s ease-in-out;
-}
-
-.carousel-images img {
-    width: 100%;
-    height: 350px;
-    object-fit: cover;
-}
-
-.carousel button {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    background-color: rgba(0,0,0,0.5);
-    color: white;
-    border: none;
-    padding: 10px;
-    cursor: pointer;
-    font-size: 1.5rem;
-    z-index: 10;
-}
-
-.prev {
-    left: 10px;
-}
-.next {
-    right: 10px;
-}
-
-/* Sections */
 section {
-    background-color: var(--white);
-    margin: 30px auto;
-    padding: 30px;
-    border-radius: 10px;
-    width: 90%;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    margin-bottom: 30px;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
 section h2 {
+    color: #007BFF;
     margin-bottom: 15px;
-    color: var(--primary);
 }
 
-/* Contact Form */
-form {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-}
-
-input, textarea {
-    padding: 10px;
-    border-radius: 5px;
-    border: 1px solid #ccc;
-}
-
-button[type="submit"] {
-    background-color: var(--primary);
-    color: var(--white);
-    border: none;
-    padding: 10px;
-    cursor: pointer;
-    border-radius: 5px;
+form label {
+    display: block;
+    margin-bottom: 5px;
     font-weight: bold;
 }
 
-button[type="submit"]:hover {
-    background-color: var(--dark);
+form input, form textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #CCC;
+    border-radius: 5px;
 }
 
-/* Back to Top */
+form button {
+    background-color: #007BFF;
+    color: #fff;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+form button:hover {
+    background-color: #0056B3;
+}
+
+#formMessage {
+    color: green;
+    font-weight: bold;
+    text-align: center;
+}
+
 #backToTop {
     position: fixed;
     bottom: 20px;
     right: 20px;
-    padding: 12px 16px;
-    background-color: var(--primary);
-    color: white;
+    background-color: #007BFF;
+    color: #fff;
+    padding: 10px 15px;
     border: none;
     border-radius: 50%;
     cursor: pointer;
@@ -162,25 +130,53 @@ button[type="submit"]:hover {
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
 }
 
-footer {
-    background-color: var(--dark);
-    color: var(--white);
-    text-align: center;
-    padding: 15px;
-    margin-top: 30px;
+#backToTop:hover {
+    background-color: #0056B3;
 }
 
-/* Responsive */
-@media (max-width: 768px) {
-    nav ul {
-        flex-direction: column;
-    }
+footer {
+    background-color: #0056B3;
+    color: #fff;
+    text-align: center;
+    padding: 10px;
+}
 
-    .carousel-images img {
-        height: 250px;
-    }
+.carousel {
+    position: relative;
+    width: 100%;
+    height: 400px;
+    margin-bottom: 20px;
+    overflow: hidden;
+    border-radius: 8px;
+}
 
-    .school-name {
-        font-size: 2rem;
-    }
+.carousel-images {
+    display: flex;
+    transition: transform 0.5s ease;
+}
+
+.carousel-images img {
+    width: 100%;
+    height: 400px;
+    object-fit: cover;
+}
+
+.carousel button {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(0, 0, 0, 0.5);
+    color: #fff;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    z-index: 10;
+}
+
+.prev {
+    left: 10px;
+}
+
+.next {
+    right: 10px;
 }
